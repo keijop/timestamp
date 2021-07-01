@@ -5,6 +5,9 @@
 var express = require('express');
 var app = express();
 
+//handlers
+const { noParamResponse, dateResponse } = require('./controllers/handlers')
+
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
 var cors = require('cors');
@@ -18,16 +21,16 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+// no params get request
+app.get('/api', noParamResponse);
 
-// your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  console.log(new Date())
-  res.json({greeting: 'hello API', time : new Date()});
-});
+// get request with param
+app.get('/api/:date', dateResponse);
 
 
+app.listen(5000, () => console.log('app is listening on port 5000...'))
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+// var listener = app.listen(process.env.PORT, function () {
+//   console.log('Your app is listening on port ' + listener.address().port);
+// });
