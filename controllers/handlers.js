@@ -18,7 +18,7 @@ const dateResponse = (req,res) => {
 	if ( millisecondsToDate(Number(date)) === 'Invalid Date' ) {
 		return res.status(200).json( { unix : Date.parse( date ) , utc : new Date(date).toGMTString() })
 	} else {
-		return res.status(200).json( { unix : date, utc : new Date(Number(date)).toGMTString() })
+		return res.status(200).json( { unix : Number(date), utc : new Date(Number(date)).toGMTString() })
 	}
 
 }
