@@ -24,7 +24,7 @@ const dateResponse = (req,res) => {
 }
 
 const noParamResponse = (req, res) => {
-	res.status(200).json({unix : currentTimeInMilliSeconds, utc : currentUTC})
+	res.status(200).json({unix : new Date().getTime(), utc : new Date().toGMTString()})
 }
 
 
