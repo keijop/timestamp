@@ -5,7 +5,7 @@
 var express = require('express');
 var app = express();
 
-//handlers
+// handlers
 const { noParamResponse, dateResponse } = require('./controllers/handlers')
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
